@@ -1,11 +1,11 @@
 import { useState, useEffect } from "react";
-import axios from "axios";
+import {getPosts, getPost,createPost,updatePost,deletePost} from "./api";
 import "./App.css";
 
 function App() {
-  const [data, setData] = useState();
+  const [posts, setPosts] = useState();
 
-  function createPost(){
+/*   function createPost(){
     let postObject = {
       title:"MERN",
       description:"I am learning",
@@ -14,24 +14,34 @@ function App() {
       dateCreated: new Date()
     }
     axios.post("http://localhost:4000/posts",postObject)
+  } */
+
+    function makePost()
+    {
+      let postObject = {
+      title:"haha",
+      description:"what was the question?",
+      content:"very well",
+      author:"tom and jerry",
+      dateCreated: new Date()
+    }
+    createPost(postObject)
   }
 
 
-/*   useEffect(() => {
-    async function grabData() {
-      const response = await axios.get("http://localhost:4000/posts/");
-      console.log(response);
-      if (response.status === 200){
-        setData(response.data)
-      }
+  /* useEffect(() => {
+  async function loadAllPosts() {
+    let data = await getPosts();
+    if(data){
+      setPosts(data)
     }
-    grabData()
+  }
+  loadAllPosts()
   }, []); */
 
-  return (<>
-  <button onClick={createPost}>Create Object</button>
 
-{JSON.stringify(data)}
+  return (<>
+<button onClick={makePost}>Create Post</button>
   </>);
 }
 
