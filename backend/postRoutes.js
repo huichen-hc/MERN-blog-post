@@ -68,4 +68,14 @@ postRoutes.route("/posts/:id").delete(async (request, response) => {
   response.json(data)
   });
 
-module.exports = postRoutes
+//#6 Delete All
+postRoutes.route("/posts/").delete(async (request, response) => {
+  let db = database.getDb();
+  let data = await db
+    .collection("posts")
+    .deleteMany();
+response.json(data)
+});
+
+
+module.exports = postRoutes 
