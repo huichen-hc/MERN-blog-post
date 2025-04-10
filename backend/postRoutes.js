@@ -9,9 +9,9 @@ postRoutes.route("/posts").get(async (request, response) => {
   let db = database.getDb();
   let data = await db.collection("posts").find({}).toArray();
   if (data.length > 0) {
-    response.json(data);
+    response.status(200).json(data);
   } else {
-    throw new Error("Data was not found!");
+    response.status(404).json({error: "No posts found!"});
   }
 });
 
@@ -39,7 +39,7 @@ postRoutes.route("/posts").post(async (request, response) => {
     description: request.body.description,
   };
   let data = await db.collection("posts").insertOne(mongoObject);
-  response.json(data);
+  response.status(201).json(data);
 });
 
 //#4 Update one
@@ -55,7 +55,7 @@ postRoutes.route("/posts/:id").put(async (request, response) => {
     },
   };
   let data = await db.collection("posts").updateOne({_id: new ObjectId(request.params.id)},mongoObject);
-  response.json(data);
+  response.status(200).json(data);
 });
 
 
@@ -65,7 +65,7 @@ postRoutes.route("/posts/:id").delete(async (request, response) => {
     let data = await db
       .collection("posts")
       .deleteOne({ _id: new ObjectId(request.params.id) });
-  response.json(data)
+  response.status(200).json(data)
   });
 
 //#6 Delete All
@@ -74,7 +74,7 @@ postRoutes.route("/posts/").delete(async (request, response) => {
   let data = await db
     .collection("posts")
     .deleteMany();
-response.json(data)
+response.status(200).json(data)
 });
 
 
