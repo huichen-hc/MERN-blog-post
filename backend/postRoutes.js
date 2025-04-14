@@ -22,9 +22,9 @@ postRoutes.route("/posts/:id").get(async (request, response) => {
     .collection("posts")
     .findOne({ _id: new ObjectId(request.params.id) });
   if (Object.keys(data).length > 0) {
-    response.json(data);
+    response.status(200).json(data);
   } else {
-    throw new Error("Data was not found!");
+    response.status(404).json({error: "The post is not found!"});
   }
 });
 
@@ -74,7 +74,7 @@ postRoutes.route("/posts/").delete(async (request, response) => {
   let data = await db
     .collection("posts")
     .deleteMany();
-response.status(200).json(data)
+response.status(204).send();
 });
 
 
