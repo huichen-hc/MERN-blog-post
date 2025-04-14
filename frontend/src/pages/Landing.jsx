@@ -1,9 +1,10 @@
 import React from 'react'
+import CreateUser from '../components/CreateUser'
 
 function Landing() {
   return (
     <div>
-      Landing page
+      <CreateUser />
     </div>
   )
 }
