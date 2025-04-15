@@ -2,6 +2,7 @@ import React from "react";
 import { verifyUser } from "../api";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import axios from "axios";
 
 function Login() {
   const [user, setUser] = useState({
@@ -20,6 +21,8 @@ function Login() {
    
       const response = await verifyUser(user);
       if (response){
+        sessionStorage.setItem("User", response)
+        axios.defaults.headers.common["Authorization"] = `Bearer ${response}`
         navigate("/home");
       }else{
         alert("Login failed!")
