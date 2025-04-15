@@ -95,12 +95,15 @@ userRoutes.route("/users/login").post(async (request, response) => {
     const user = await db
       .collection("users")
       .findOne({ email: request.body.email });
+      console.log("User found")
     if (user){
         let confirmation = await bcrypt.compare(request.body.password,user.password)
+        console.log("Password comparison result:", confirmation);
         if(confirmation){
             response.json({success:true,user})
         }else{
             response.json({success:false,message:"Incorrect Password."})
+            console.log("Incorrect Password.")
         }
     } else{
         response.json({success:false, message:"User not found."})

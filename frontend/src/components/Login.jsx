@@ -1,12 +1,15 @@
 import React from "react";
 import { verifyUser } from "../api";
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 function Login() {
   const [user, setUser] = useState({
     email: "",
     password: "",
   });
+
+  const navigate = useNavigate();
 
   function handleChange(e) {
     setUser({ ...user, [e.target.name]: e.target.value });
@@ -16,7 +19,12 @@ function Login() {
     e.preventDefault();
    
       const response = await verifyUser(user);
-      console.log(response);
+      if (response){
+        navigate("/home");
+      }else{
+        alert("Login failed!")
+      }
+     
   }
 
   return (
