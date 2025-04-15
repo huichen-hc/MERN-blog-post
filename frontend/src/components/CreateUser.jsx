@@ -2,7 +2,7 @@ import React from "react";
 import { createUser } from "../api";
 import { useState } from "react";
 
-export default function CreateUser() {
+function CreateUser() {
   const [user, setUser] = useState({
     name: "",
     email: "",
@@ -48,7 +48,7 @@ export default function CreateUser() {
         required
       />
       <input
-        type="text"
+        type="password"
         placeholder="Password"
         onChange={handleChange}
         name="password"
@@ -59,3 +59,5 @@ export default function CreateUser() {
     </form>
   );
 }
+
+export default CreateUser;
