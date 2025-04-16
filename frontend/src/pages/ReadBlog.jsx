@@ -11,10 +11,12 @@ function ReadBlog() {
 
   useEffect(() => {
     async function loadPost() {
+      
       let data = await getPost(postId);
       let date = new Date(data.dateCreated);
       data.dateCreated = date.toString();
-      setPost(data);
+      setPost(data)
+      window.gtag("event","read",{"title":data.title})
     }
     loadPost();
   }, []);

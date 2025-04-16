@@ -7,7 +7,9 @@ function CreateBlog() {
   const [description, setDescription] = useState("");
   const [content, setContent] = useState("");
 
+
   async function handleSubmit() {
+
     let submitObject = {
       title: title,
       description: description,
@@ -16,6 +18,8 @@ function CreateBlog() {
       dateCreated: new Date(),
     };
     await createPost(submitObject);
+
+    window.gtag("event", "create_post");
   }
 
   return (

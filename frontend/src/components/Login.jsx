@@ -16,18 +16,21 @@ function Login() {
     setUser({ ...user, [e.target.name]: e.target.value });
   }
 
+
   async function handleSubmit(e) {
     e.preventDefault();
-   
-      const response = await verifyUser(user);
-      if (response){
-        sessionStorage.setItem("User", response)
-        axios.defaults.headers.common["Authorization"] = `Bearer ${response}`
-        navigate("/home");
-      }else{
-        alert("Login failed!")
-      }
-     
+
+    const response = await verifyUser(user);
+    if (response) {
+      window.gtag("event","login_success");
+      sessionStorage.setItem("User", response);
+      axios.defaults.headers.common["Authorization"] = `Bearer ${response}`;
+      navigate("/home");
+    } else {
+      window.gtag("event","login_failed");
+      alert("Login failed!");
+    }
+    window.gtag("event", "login_click");
   }
 
   return (
@@ -52,6 +55,5 @@ function Login() {
     </form>
   );
 }
-
 
 export default Login;
