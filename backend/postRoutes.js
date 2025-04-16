@@ -45,7 +45,7 @@ postRoutes.route("/posts").post(verifyToken, async (request, response) => {
   response.status(201).json(data);
 });
 
-//#4 Update one
+//#4 Update One
 postRoutes.route("/posts/:id").put(verifyToken, async (request, response) => {
   let db = database.getDb();
   let mongoObject = {
@@ -80,6 +80,7 @@ postRoutes.route("/posts/").delete(verifyToken, async (request, response) => {
 response.status(204).send();
 });
 
+//#7 Verify Token
 function verifyToken(request, response, next){
   const authHeaders = request.headers["authorization"];
   const token = authHeaders && authHeaders.split(' ')[1];

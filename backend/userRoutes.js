@@ -39,7 +39,6 @@ userRoutes.route("/users").post(async (request, response) => {
     .collection("users")
     .findOne({ email: request.body.email });
     
-
   if (takenEmail) {
     response.status(409).json({ message: "The email is already taken." }); 
   } else {
