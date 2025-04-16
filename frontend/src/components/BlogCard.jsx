@@ -7,7 +7,7 @@ function BlogCard({post}) {
 
   return (
 
-    <Link to={`/readblog/${post._id}`} className="post">
+    <Link to={`/readblog/${post._id}`} className="blogcard">
       <h1>{post.title}</h1>
       <h2>{post.description}</h2>
       <p>{stringDate.slice(4,15 )}</p>

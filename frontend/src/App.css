@@ -5,60 +5,49 @@
   text-align: center;
 }
 
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
-}
-
-@keyframes logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
-  }
-}
-
-.card {
-  padding: 2em;
-}
-
-.read-the-docs {
-  color: #888;
-}
-
-
 .navbar{
 position: fixed;
 top:0;
-width: 50%;
-left: 25%;
+width: 100%;
+left: 0;
 display: flex;
-justify-content: space-between;
+justify-content:center;
+align-items: center;
+gap:5rem;
+z-index: 1000;
+background-color: white;
+font-size: 1rem;
 }
 
-.navItem{
+.navbar-list {
+  display: flex;
+  list-style: none; 
+}
+
+.navbar-item{
 padding: 4px;
 margin: 4px;
-gap:2rem;
-color: white;
-border-style: solid;
-border-width: 2px;
-border-radius: 4px;
+}
+
+.navbar-item a {
+  text-decoration: none;
+  color: black;
+  font-weight: bold;
+}
+
+.navbar-item a:hover {
+  color: #2282be; 
+}
+
+.logout-button {
+  background:none;
+  color: black;
+  border: none;
+  cursor: pointer;
+}
+
+.logout-button:hover {
+  background-color: #f6cdcd;
 }
 
 .posts{
@@ -66,13 +55,17 @@ border-radius: 4px;
   flex-direction: column;
 }
 
-.post{
+.blogcard{
   margin: 4px;
   padding: 4px;
   border-radius: 10px;
 }
 
-.post:hover{
+.blogcard h1,h2,p {
+  color: rgb(80, 78, 78);
+}
+
+.blogcard:hover{
   cursor: pointer;
   background-color: antiquewhite;
 }

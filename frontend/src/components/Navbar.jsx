@@ -14,14 +14,16 @@ export default function Navbar() {
 
   return (
     <div className="navbar">
+      <ul className="navbar-list">
       {pageData.map((page) => {
         return (
-          <Link to={page.path} className="navbar-item">
-            <button>{page.name}</button>
-          </Link>
+        <li key={page.path} className="navbar-item">
+          <Link to={page.path}>{page.name}</Link>
+        </li>
         );
       })}
-      <button onClick={handleLogout}>Log out</button>
+      </ul>
+      <button className="logout-button" onClick={handleLogout}>Log out</button>
     </div>
   );
 }
