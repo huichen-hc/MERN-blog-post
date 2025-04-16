@@ -36,7 +36,7 @@ postRoutes.route("/posts").post(verifyToken, async (request, response) => {
   let db = database.getDb();
   let mongoObject = {
     title: request.body.title,
-    author: request.body.author,
+    author: request.user._id,
     content: request.body.content,
     dateCreated: request.body.dateCreated,
     description: request.body.description,
@@ -93,7 +93,6 @@ function verifyToken(request, response, next){
     request.user = user;
     next()
   })
-
 }
 
 module.exports = postRoutes 
