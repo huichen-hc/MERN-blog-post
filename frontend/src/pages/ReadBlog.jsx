@@ -19,14 +19,13 @@ function ReadBlog() {
     loadPost();
   }, []);
 
-
   return (
     <article>
-      <button onClick={()=> navigate(-1)}>Back</button>
-        <h1>{post.title}</h1>
-        <h2>{post.description}</h2>
-        <h3>{post.dateCreated?.slice(4, 15)}</h3>
-        <p>{post.content}</p>
+      <button onClick={() => navigate(-1)}>Back</button>
+      <h1>{post.title}</h1>
+      <h2>{post.description}</h2>
+      <h3>{post.dateCreated?.slice(4, 15)}</h3>
+      <p>{post.content}</p>
     </article>
   );
 }
