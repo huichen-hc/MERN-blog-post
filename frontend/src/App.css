@@ -69,3 +69,72 @@ margin: 4px;
   cursor: pointer;
   background-color: antiquewhite;
 }
+
+.login-form,
+.create-user-form {
+  max-width: 400px;
+  margin: 3rem auto;
+  padding: 2rem;
+  background-color: #f9f9f9;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  font-family: Arial, sans-serif;
+}
+
+.login-form label,
+.create-user-form label {
+  display: block;
+  text-align: left;
+  margin-bottom: 0.5rem;
+  font-weight: bold;
+  color: #333;
+}
+
+.login-form input,
+.create-user-form input {
+  width: 100%;
+  padding: 0.75rem;
+  margin-bottom: 1.5rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 1rem;
+  box-sizing: border-box;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.login-form input:focus,
+.create-user-form input:focus {
+  border-color: #2282be;
+  outline: none;
+  box-shadow: 0 0 4px rgba(34, 130, 190, 0.3);
+}
+
+.login-form button,
+.create-user-form button {
+  width: 100%;
+  padding: 0.75rem;
+  background-color: #2282be;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  font-size: 1rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.login-form button:hover,
+.create-user-form button:hover {
+  background-color: #1a6fa5;
+}
+
+.login-form button:active,
+.create-user-form button:active {
+  background-color: #145a82;
+}
+
+.login-form button:disabled,
+.create-user-form button:disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
+}

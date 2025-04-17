@@ -30,32 +30,38 @@ function CreateUser() {
   }
 
   return (
-    <form onSubmit={handleSubmit}>
+    <form className="create-user-form" onSubmit={handleSubmit}>
+      <label htmlFor="name">Name:</label>
       <input
         type="text"
-        placeholder="Name"
+        id="name"
+        placeholder="Enter your name"
         onChange={handleChange}
         name="name"
         maxLength={20}
         required
       />
+      <label htmlFor="email">Email:</label>
       <input
         type="email"
-        placeholder="Email"
+        id="email"
+        placeholder="Enter your email"
         onChange={handleChange}
         name="email"
         maxLength={40}
         required
       />
+      <label htmlFor="password">Password:</label>
       <input
         type="password"
-        placeholder="Password"
+        id="password"
+        placeholder="Enter your password"
         onChange={handleChange}
         name="password"
         maxLength={20}
         required
       />
-      <button type="submit">Create Account </button>
+      <button type="submit">Create Account</button>
     </form>
   );
 }

@@ -10,6 +10,7 @@ function Landing() {
     <>
       {view === 0 ? (
         <>
+        <h1>Welcome to Simple Blog ✏️</h1>
           <Login />
           <button onClick={() => setView(1)}>Create new Account</button>
         </>
