@@ -2,15 +2,15 @@ import React from "react";
 
 function Contact() {
   return (
-    <section>
-      <header>
+    <section className="contact-section">
+      <header className="contact-header">
         <h1>Contact Us</h1>
         <p>
           If you have any questions, feedback, or inquiries, write them down, fold them into a paper airplane, and throw them out the window. If that doesn’t work, try creating a new post. Only contact us if you’ve run out of options, snacks, and patience.
         </p>
       </header>
 
-      <article>
+      <article className="contact-article">
         <h2>Contact Information</h2>
         <ul>
           <li>
