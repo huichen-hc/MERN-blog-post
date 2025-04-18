@@ -21,7 +21,7 @@ function Home() {
   return (
     <main>
       <section className="posts">
-        <h1>Recent Blog Posts</h1>
+        <h1 className="home-title">Recent Blog Posts</h1>
         {posts.length > 0 ? (
           <ul>
             {posts.map((post) => (

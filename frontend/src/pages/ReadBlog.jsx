@@ -45,7 +45,7 @@ function ReadBlog() {
 
   return (
     <main>
-      <article>
+      <article className="read-blog-article">
         <header>
           <button onClick={() => navigate(-1)} aria-label="Go back to the previous page">
             Back
@@ -55,7 +55,7 @@ function ReadBlog() {
           <p>{post.dateCreated?.slice(4, 15)}</p>
         </header>
         <section>
-          <p>{post.content}</p>
+          <p className="read-blog-content">{post.content}</p>
         </section>
       </article>
 

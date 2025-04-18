@@ -24,7 +24,7 @@ function CreateBlog() {
   }
 
   return (
-    <section>
+    <section className="create-blog-section">
       <header>
         <h1>Create a New Post</h1>
       </header>

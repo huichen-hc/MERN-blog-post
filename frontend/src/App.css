@@ -78,18 +78,31 @@ a {
   margin: 4px;
   padding: 4px;
   border-radius: 10px;
+  width: 800px;
 }
 
 .blogcard h1,
+.read-blog-article h1 {
+font-size: 2rem;
+}
+
 .blogcard h2,
-.blogcard p {
-/*   color: #2282be; */
-color: black;
+.read-blog-article h2{
+  color: #00000088;
+}
+
+.read-blog-article{
+  width: 800px;
+}
+
+.read-blog-content{
+  text-align: left;
 }
 
 .blogcard:hover {
+  color: black;
   cursor: pointer;
-  background-color: #bfd6e4;;
+  background-color: #d1dfe8;;
 }
 
 .login-form,
@@ -199,7 +212,10 @@ color: black;
 }
 
 .about-header h1,
-.contact-header h1{
+.contact-header h1,
+.home-title,
+.create-blog-section h1,
+.profile-section h1{
   font-size: 2.5rem;
   text-align: center;
   margin-bottom: 1rem;
@@ -207,13 +223,13 @@ color: black;
 }
 
 .contact-article h2 {
-  color: #2282be;
   text-align: center;
 }
 
 .about-article p,
 .contact-header,
-.contact-article  {
+.contact-article,
+.profile-article p  {
   margin-bottom: 1.5rem;
   font-size: 1.1rem;
 }

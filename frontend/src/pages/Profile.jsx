@@ -53,11 +53,11 @@ function Profile() {
 
   return (
     <main>
-      <section>
+      <section className="profile-section">
         <header>
           <h1>Your Profile</h1>
         </header>
-        <article>
+        <article className="profile-article">
           <h2>Profile Information</h2>
           <p><strong>Name:</strong> {user.name}</p>
           <p><strong>Email:</strong> {user.email}</p>
