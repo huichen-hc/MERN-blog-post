@@ -19,11 +19,37 @@ function ReadBlog() {
     loadPost();
   }, [postId]);
 
+  // Generate JSON-LD for better SEO of each individual post
+  const generateJsonLd = () => {
+    if (!post.title) return null;
+    return {
+      "@context": "https://schema.org",
+      "@type": "Article",
+      headline: post.title,
+      description: post.description,
+      author: {
+        "@type": "Person",
+        name: post.author,
+      },
+      datePublished: post.dateCreated,
+      mainEntityOfPage: {
+        "@type": "WebPage",
+        "@id": window.location.href,
+      },
+      publisher: {
+        "@type": "Organization",
+        name: "Simple Blog Website",
+      },
+    };
+  };
+
   return (
     <main>
       <article>
         <header>
-          <button onClick={() => navigate(-1)} aria-label="Go back">Back</button>
+          <button onClick={() => navigate(-1)} aria-label="Go back">
+            Back
+          </button>
           <h1>{post.title}</h1>
           <h2>{post.description}</h2>
           <p>{post.dateCreated?.slice(4, 15)}</p>
@@ -32,6 +58,12 @@ function ReadBlog() {
           <p>{post.content}</p>
         </section>
       </article>
+
+      {post.title && (
+        <script type="application/ld+json">
+          {JSON.stringify(generateJsonLd())}
+        </script>
+      )}
     </main>
   );
 }
