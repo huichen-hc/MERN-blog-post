@@ -13,18 +13,15 @@ export default function Navbar() {
   }
 
   return (
-    <div className="navbar">
+    <nav className="navbar">
       <ul className="navbar-list">
-      {pageData.map((page) => {
-        return (
-        <li key={page.path} className="navbar-item">
-          <Link to={page.path}>{page.name}</Link>
-        </li>
-        );
-      })}
+        {pageData.map((page) => (
+          <li key={page.path} className="navbar-item">
+            <Link to={page.path}>{page.name}</Link>
+          </li>
+        ))}
       </ul>
       <button className="logout-button" onClick={handleLogout}>Log out</button>
-    </div>
+    </nav>
   );
 }
-  

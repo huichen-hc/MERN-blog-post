@@ -1,6 +1,5 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { getPosts } from "../api";
-import { useState, useEffect } from "react";
 import BlogCard from "../components/BlogCard";
 
 function Home() {
@@ -20,11 +19,22 @@ function Home() {
   }, []);
 
   return (
-    <div className="posts">
-      {posts.map((post) => {
-        return <BlogCard post={post} />;
-      })}
-    </div>
+    <main>
+      <section className="posts">
+        <h1>Recent Blog Posts</h1>
+        {posts.length > 0 ? (
+          <ul>
+            {posts.map((post) => (
+              <li key={post.id}>
+                <BlogCard post={post} />
+              </li>
+            ))}
+          </ul>
+        ) : (
+          <p>No posts available. Check back later!</p>
+        )}
+      </section>
+    </main>
   );
 }
 

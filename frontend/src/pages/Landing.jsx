@@ -7,21 +7,24 @@ function Landing() {
   const [view, setView] = useState(0);
 
   return (
-    <>
-      {view === 0 ? (
-        <>
+    <main>
+      <header>
         <h1>Welcome to Simple Blog ✏️</h1>
-          <Login />
-          <button onClick={() => setView(1)}>Create new Account</button>
-        </>
-      ) : (
-        <>
-          {" "}
-          <CreateUser />
-          <button onClick={() => setView(0)}>Login existing account </button>
-        </>
-      )}
-    </>
+      </header>
+      <section>
+        {view === 0 ? (
+          <>
+            <Login />
+            <button onClick={() => setView(1)}>Create New Account</button>
+          </>
+        ) : (
+          <>
+            <CreateUser />
+            <button onClick={() => setView(0)}>Login to Existing Account</button>
+          </>
+        )}
+      </section>
+    </main>
   );
 }
 
