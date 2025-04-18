@@ -78,8 +78,9 @@ According to OWASP, broken access control is one of the most critical security r
 
 To prevent accidental or unauthorized deletions:
 - Users are only allowed to delete the posts they created to protect others’ content
-- After users click 'delete' button of one post, Window.confirm() prompt before deletion to reduce the chance of accidental removal
+- Added a confirmation prompt with window.confirm() before deleting a post to reduce the chance of accidental removal
 
 **Additional Security Measures**
+- Generic login error messages improve security by preventing attackers from identifying valid email addresses
 - JWT tokens are stored in sessionStorage, which is cleared when the browser is closed, reducing the risk of token theft
 - Environment variables are used to store sensitive configuration values (e.g. secret keys)
