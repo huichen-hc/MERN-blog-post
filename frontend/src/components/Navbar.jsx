@@ -4,12 +4,18 @@ import { pageData } from "./pageData";
 import { useNavigate } from "react-router-dom";
 
 export default function Navbar() {
+  const navigate = useNavigate();
 
-  const navigate = useNavigate(); 
-
-  function handleLogout(){
+  function handleLogout() {
     sessionStorage.removeItem("User");
-    navigate("/");
+
+    const confirmLogout = window.confirm("Are you sure you want to log out?");
+    if (!confirmLogout) {
+      return;
+    }
+    {
+      navigate("/");
+    }
   }
 
   return (
@@ -21,7 +27,9 @@ export default function Navbar() {
           </li>
         ))}
       </ul>
-      <button className="logout-button" onClick={handleLogout}>Log out</button>
+      <button className="logout-button" onClick={handleLogout}>
+        Log out
+      </button>
     </nav>
   );
 }

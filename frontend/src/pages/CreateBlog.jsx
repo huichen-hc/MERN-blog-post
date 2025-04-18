@@ -1,12 +1,14 @@
 import React, { useState } from "react";
 import { createPost } from "../api";
+import { useNavigate } from "react-router-dom";
 
 function CreateBlog() {
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
   const [content, setContent] = useState("");
+  const navigate = useNavigate();
 
-  async function handleSubmit(e) {
+   async function handleSubmit(e) {
     e.preventDefault();
     let submitObject = {
       title: title,
@@ -16,8 +18,9 @@ function CreateBlog() {
       dateCreated: new Date(),
     };
     await createPost(submitObject);
-
     window.gtag("event", "create_post");
+    alert("Your post has been created successfully!"); 
+    navigate("/home"); 
   }
 
   return (

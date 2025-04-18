@@ -102,6 +102,11 @@ margin: 4px;
   color: #333;
 }
 
+.login-form label,
+.create-user-form label{
+  text-align:left
+}
+
 .login-form input,
 .create-user-form input,
 .create-blog-form input,
