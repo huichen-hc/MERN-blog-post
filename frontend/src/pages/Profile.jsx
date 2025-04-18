@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { getPosts } from "../api";
+import { getPosts, deletePost } from "../api"; 
 import * as jwt_decode from "jwt-decode";
 import BlogCard from "../components/BlogCard";
 
@@ -18,11 +18,33 @@ function Profile() {
       const filteredPosts = allPosts.filter(
         (post) => post.author === decodedUser._id
       );
+      filteredPosts.sort(
+        (d1, d2) =>
+          new Date(d2.dateCreated).getTime() -
+          new Date(d1.dateCreated).getTime()
+      );
       setPosts(filteredPosts);
       setUser(decodedUser);
     }
     loadUserData();
   }, []);
+
+  async function handleDelete(postId) {
+    const confirmDelete = window.confirm(
+      "Are you sure you want to delete this post?"
+    );
+    if (!confirmDelete) {
+      return; 
+    }
+
+    try {
+      await deletePost(postId); 
+      setPosts((prevPosts) => prevPosts.filter((post) => post._id !== postId)); 
+      console.log("Post deleted successfully");
+    } catch (error) {
+      console.error("Error deleting post:", error.message);
+    }
+  }
 
   return (
     <main>
@@ -46,6 +68,7 @@ function Profile() {
             {posts.map((post) => (
               <li key={post._id}>
                 <BlogCard post={post} />
+                <button className= "delete-button" onClick={() => handleDelete(post._id)}>Delete</button> 
               </li>
             ))}
           </ul>
