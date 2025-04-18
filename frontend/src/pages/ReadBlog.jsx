@@ -55,7 +55,11 @@ function ReadBlog() {
           <p>{post.dateCreated?.slice(4, 15)}</p>
         </header>
         <section>
-          <p className="read-blog-content">{post.content}</p>
+          {post.content?.split("\n").map((paragraph, index) => (
+            <p key={index} className="read-blog-content">
+              {paragraph}
+            </p>
+          ))}
         </section>
       </article>
 

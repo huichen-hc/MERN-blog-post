@@ -20,6 +20,10 @@ a {
   text-decoration: none;
 }
 
+main {
+  padding-top: 3rem; 
+}
+
 .navbar {
   position: fixed;
   top: 0;
@@ -220,6 +224,10 @@ font-size: 2rem;
   text-align: center;
   margin-bottom: 1rem;
   color: #2282be;
+}
+
+.create-blog-section label{
+font-size: 1.2rem;
 }
 
 .contact-article h2 {

@@ -24,6 +24,7 @@ function CreateBlog() {
   }
 
   return (
+    <main>
     <section className="create-blog-section">
       <header>
         <h1>Create a New Post</h1>
@@ -62,6 +63,7 @@ function CreateBlog() {
         <button type="submit">Submit</button>
       </form>
     </section>
+    </main>
   );
 }
 
