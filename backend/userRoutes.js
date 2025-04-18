@@ -13,9 +13,9 @@ userRoutes.route("/users").get(async (request, response) => {
   let db = database.getDb();
   let data = await db.collection("users").find({}).toArray();
   if (data.length > 0) {
-    response.status(200).json(data);
+    response.status(200).json(data); 
   } else {
-    response.status(404).json({ error: "No users found!" });
+    response.status(204).send(); 
   }
 });
 
@@ -96,22 +96,26 @@ userRoutes.route("/users/login").post(async (request, response) => {
   const user = await db
     .collection("users")
     .findOne({ email: request.body.email });
-  console.log("User found");
+
   if (user) {
     let confirmation = await bcrypt.compare(
       request.body.password,
       user.password
     );
     console.log("Password comparison result:", confirmation);
+
     if (confirmation) {
       const token = jwt.sign(user, process.env.SECRETKEY, { expiresIn: "1h" });
-      response.json({ success: true, token });
+      response.status(200).json({ success: true, token }); 
     } else {
-      response.json({ success: false, message: "Incorrect Password." });
-      console.log("Incorrect Password.");
+      response
+        .status(401) 
+        .json({ success: false, message: "Incorrect Password." });
     }
   } else {
-    response.json({ success: false, message: "User not found." });
+    response
+      .status(404) 
+      .json({ success: false, message: "User not found." });
   }
 });
 

@@ -14,5 +14,5 @@ app.use(users);
 
 app.listen(PORT, () => {
   connect.connectToServer();
-  console.log("Server is running");
+  console.log(`Server is running at http://localhost:${PORT}`);
 });

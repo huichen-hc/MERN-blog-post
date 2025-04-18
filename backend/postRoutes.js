@@ -2,7 +2,6 @@ const express = require("express");
 const database = require("./connect");
 const ObjectId = require("mongodb").ObjectId;
 const jwt = require("jsonwebtoken");
-const userRoutes = require("./userRoutes");
 require("dotenv").config({ path: "./config.env" });
 
 let postRoutes = express.Router();
@@ -14,7 +13,7 @@ postRoutes.route("/posts").get(verifyToken, async (request, response) => {
   if (data.length > 0) {
     response.status(200).json(data);
   } else {
-    response.status(404).json({ error: "No posts found!" });
+    response.status(204).send();
   }
 });
 
