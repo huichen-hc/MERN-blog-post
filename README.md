@@ -19,7 +19,7 @@ Users must sign up and log in via the landing page to access the content. Once a
 
 ```
 git clone https://github.com/huichen-hc/MERN-blog-post.git
-cd <the-correct-repo-folder>
+cd MERN-blog-post
 ```
 
 2. **Start the backend server**
