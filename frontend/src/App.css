@@ -82,16 +82,18 @@ margin: 4px;
 }
 
 .login-form label,
-.create-user-form label {
+.create-user-form label,
+.create-blog-form label {
   display: block;
-  text-align: left;
   margin-bottom: 0.5rem;
   font-weight: bold;
   color: #333;
 }
 
 .login-form input,
-.create-user-form input {
+.create-user-form input,
+.create-blog-form input,
+.create-blog-form textarea {
   width: 100%;
   padding: 0.75rem;
   margin-bottom: 1.5rem;
@@ -103,14 +105,17 @@ margin: 4px;
 }
 
 .login-form input:focus,
-.create-user-form input:focus {
+.create-user-form input:focus,
+.create-blog-form input:focus,
+.create-blog-form textarea:focus {
   border-color: #2282be;
   outline: none;
   box-shadow: 0 0 4px rgba(34, 130, 190, 0.3);
 }
 
 .login-form button,
-.create-user-form button {
+.create-user-form button,
+.create-blog-form button {
   width: 100%;
   padding: 0.75rem;
   background-color: #2282be;
@@ -124,17 +129,18 @@ margin: 4px;
 }
 
 .login-form button:hover,
-.create-user-form button:hover {
+.create-user-form button:hover,
+.create-blog-form button:hover {
   background-color: #1a6fa5;
 }
 
-.login-form button:active,
-.create-user-form button:active {
-  background-color: #145a82;
+.create-blog-form {
+  min-width: 800px;
 }
 
-.login-form button:disabled,
-.create-user-form button:disabled {
-  background-color: #ccc;
-  cursor: not-allowed;
+.create-blog-form textarea {
+  resize: vertical;
+  overflow-y: auto;
+  line-height: 1.5;
+  font-family: Arial,sans-serif;
 }
