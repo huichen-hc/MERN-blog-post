@@ -47,7 +47,7 @@ function ReadBlog() {
     <main>
       <article>
         <header>
-          <button onClick={() => navigate(-1)} aria-label="Go back">
+          <button onClick={() => navigate(-1)} aria-label="Go back to the previous page">
             Back
           </button>
           <h1>{post.title}</h1>

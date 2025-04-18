@@ -29,6 +29,11 @@ function Profile() {
     loadUserData();
   }, []);
 
+  function formatDate(dateString) {
+    const date = new Date(dateString);
+    return date.toString().slice(4, 15); 
+  }
+
   async function handleDelete(postId) {
     const confirmDelete = window.confirm(
       "Are you sure you want to delete this post?"
@@ -56,7 +61,7 @@ function Profile() {
           <h2>Profile Information</h2>
           <p><strong>Name:</strong> {user.name}</p>
           <p><strong>Email:</strong> {user.email}</p>
-          <p><strong>Join Date:</strong> {user.joinDate}</p>
+          <p><strong>Join Date:</strong> {formatDate(user.joinDate)}</p>
         </article>
       </section>
       <section>
@@ -68,7 +73,13 @@ function Profile() {
             {posts.map((post) => (
               <li key={post._id}>
                 <BlogCard post={post} />
-                <button className= "delete-button" onClick={() => handleDelete(post._id)}>Delete</button> 
+                <button
+                  className="delete-button"
+                  onClick={() => handleDelete(post._id)}
+                  aria-label={`Delete post titled ${post.title}`}
+                >
+                  Delete
+                </button>
               </li>
             ))}
           </ul>
