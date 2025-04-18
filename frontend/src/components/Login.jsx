@@ -19,17 +19,18 @@ function Login() {
   async function handleSubmit(e) {
     e.preventDefault();
 
-    const response = await verifyUser(user);
-    if (response) {
+    try {
+      const token = await verifyUser(user);
       window.gtag("event", "login_success");
-      sessionStorage.setItem("User", response);
-      axios.defaults.headers.common["Authorization"] = `Bearer ${response}`;
+      sessionStorage.setItem("User", token);
+      axios.defaults.headers.common["Authorization"] = `Bearer ${token}`;
       navigate("/home");
-    } else {
+    } catch (error) {
       window.gtag("event", "login_failed");
-      alert("Login failed!");
+      alert(error.message);
+    } finally {
+      window.gtag("event", "login_click");
     }
-    window.gtag("event", "login_click");
   }
 
   return (

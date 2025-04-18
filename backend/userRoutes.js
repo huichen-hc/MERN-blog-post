@@ -93,30 +93,18 @@ userRoutes.route("/users/").delete(async (request, response) => {
 //#7 - Login
 userRoutes.route("/users/login").post(async (request, response) => {
   let db = database.getDb();
-  const user = await db
-    .collection("users")
-    .findOne({ email: request.body.email });
+  const user = await db.collection("users").findOne({ email: request.body.email });
 
   if (user) {
-    let confirmation = await bcrypt.compare(
-      request.body.password,
-      user.password
-    );
-    console.log("Password comparison result:", confirmation);
+    let confirmation = await bcrypt.compare(request.body.password, user.password);
 
     if (confirmation) {
       const token = jwt.sign(user, process.env.SECRETKEY, { expiresIn: "1h" });
-      response.status(200).json({ success: true, token }); 
-    } else {
-      response
-        .status(401) 
-        .json({ success: false, message: "Incorrect Password." });
+      return response.status(200).json({ success: true, token });
     }
-  } else {
-    response
-      .status(404) 
-      .json({ success: false, message: "User not found." });
   }
+  // Provide generic error message to prevent user enumeration attacks
+  response.status(401).json({ success: false, message: "Invalid email or password." });
 });
 
 module.exports = userRoutes;

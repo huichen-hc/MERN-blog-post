@@ -8,7 +8,7 @@ export async function getPosts() {
     return response.data;
   } catch (error) {
     console.error("Error fetching posts:", error.message);
-    throw error; 
+    throw error;
   }
 }
 
@@ -65,7 +65,7 @@ export async function getUser(id) {
 export async function createUser(user) {
   try {
     const response = await axios.post(`${URL}/users`, user);
-    return response.data;
+    return response;
   } catch (error) {
     console.error("Error creating user:", error.message);
     throw error;
@@ -85,13 +85,19 @@ export async function updateUser(id, user) {
 export async function verifyUser(user) {
   try {
     const response = await axios.post(`${URL}/users/login`, user);
-    if (response.data.success) {
-      return response.data.token;
-    } else {
-      throw new Error("Invalid login credentials");
+
+    if (response.status === 200 && response.data.success) {
+      return response.data.token; 
     }
+    throw new Error("Unexpected response from the server.");
   } catch (error) {
+    if (error.response) {
+      const { status, data } = error.response;
+      if (status === 401) {
+        throw new Error(data.message);
+      } 
+    }
     console.error("Error verifying user:", error.message);
-    throw error;
+    throw new Error("An error occurred while verifying the user. Please try again later.");
   }
 }

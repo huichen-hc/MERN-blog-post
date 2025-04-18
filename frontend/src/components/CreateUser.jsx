@@ -1,6 +1,7 @@
 import React from "react";
 import { createUser } from "../api";
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 function CreateUser() {
   const [user, setUser] = useState({
@@ -8,6 +9,8 @@ function CreateUser() {
     email: "",
     password: "",
   });
+
+  const navigate = useNavigate();
 
   function handleChange(e) {
     setUser({ ...user, [e.target.name]: e.target.value });
@@ -19,6 +22,8 @@ function CreateUser() {
       const response = await createUser(user);
       if (response.status === 201) {
         alert("User created successfully!");
+        navigate("/");
+        
       }
     } catch (error) {
       if (error.response?.status === 409) {
