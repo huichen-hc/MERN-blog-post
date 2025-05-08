@@ -2,6 +2,8 @@
 
 ## Summary of Application
 
+Here is the live demo: https://simple-blog-sepia-xi.vercel.app/
+
 This application is a full-stack blog website built with the **MERN** stack (MongoDB, Express, React, and Node.js). It uses a stateless RESTful API to store and manage blog post data in a MongoDB database.
 
 Users must sign up and log in via the landing page to access the content. Once authenticated, they can:
