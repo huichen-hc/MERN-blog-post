@@ -74,16 +74,7 @@ userRoutes.route("/users/:id").put(async (request, response) => {
   response.status(200).json(data);
 });
 
-//#5 Delete one
-userRoutes.route("/users/:id").delete(async (request, response) => {
-  let db = database.getDb();
-  let data = await db
-    .collection("users")
-    .deleteOne({ _id: new ObjectId(request.params.id) });
-  response.status(200).json(data);
-});
-
-//#6 - Login
+//#5 - Login
 userRoutes.route("/users/login").post(async (request, response) => {
   let db = database.getDb();
   const user = await db.collection("users").findOne({ email: request.body.email });
