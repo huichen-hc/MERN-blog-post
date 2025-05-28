@@ -67,10 +67,38 @@ postRoutes
   .route("/posts/:id")
   .delete(verifyToken, async (request, response) => {
     let db = database.getDb();
-    let data = await db
-      .collection("posts")
-      .deleteOne({ _id: new ObjectId(request.params.id) });
-    response.status(200).json(data);
+    const postId = request.params.id;
+    const userId = request.user._id;
+
+    try {
+      const post = await db
+        .collection("posts")
+        .findOne({ _id: new ObjectId(postId) });
+      if (!post) {
+        return response.status(404).json({ message: "Post not found" });
+      }
+
+      if (post.author !== userId) {
+        return response
+          .status(403)
+          .json({ message: "You are not authorized to delete this post." });
+      }
+
+      const result = await db
+        .collection("posts")
+        .deleteOne({ _id: new ObjectId(postId) });
+
+      if (result.deletedCount === 1) {
+        return response
+          .status(200)
+          .json({ message: "Post deleted successfully." });
+      } else {
+        return response.status(500).json({ message: "Failed to delete post." });
+      }
+    } catch (error) {
+      console.error(error);
+      return response.status(500).json({ message: "Server error" });
+    }
   });
 
 //#6 Verify Token
