@@ -73,14 +73,7 @@ postRoutes
     response.status(200).json(data);
   });
 
-//#6 Delete All
-postRoutes.route("/posts/").delete(verifyToken, async (request, response) => {
-  let db = database.getDb();
-  let data = await db.collection("posts").deleteMany();
-  response.status(204).send();
-});
-
-//#7 Verify Token
+//#6 Verify Token
 function verifyToken(request, response, next) {
   const authHeaders = request.headers["authorization"];
   const token = authHeaders && authHeaders.split(" ")[1];

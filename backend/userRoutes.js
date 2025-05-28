@@ -83,14 +83,7 @@ userRoutes.route("/users/:id").delete(async (request, response) => {
   response.status(200).json(data);
 });
 
-//#6 Delete All
-userRoutes.route("/users/").delete(async (request, response) => {
-  let db = database.getDb();
-  let data = await db.collection("users").deleteMany();
-  response.status(204).send();
-});
-
-//#7 - Login
+//#6 - Login
 userRoutes.route("/users/login").post(async (request, response) => {
   let db = database.getDb();
   const user = await db.collection("users").findOne({ email: request.body.email });
